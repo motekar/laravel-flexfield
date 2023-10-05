@@ -2,9 +2,9 @@
 
 namespace Motekar\FlexField;
 
+use Motekar\FlexField\Commands\FlexFieldCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Motekar\FlexField\Commands\FlexFieldCommand;
 
 class FlexFieldServiceProvider extends PackageServiceProvider
 {
