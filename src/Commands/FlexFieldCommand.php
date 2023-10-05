@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace Motekar\FlexField\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class FlexFieldCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'laravel-flexfield';
 
     public $description = 'My command';
 
