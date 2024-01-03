@@ -1,10 +1,8 @@
 <?php
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use function Pest\Laravel\artisan;
 use function Pest\Laravel\assertDatabaseSchemaHas;
 use function Pest\Laravel\assertDatabaseTableHas;
-use function Pest\Laravel\assertDatabaseHas;
 
 beforeEach(function () {
     // Mock the config file with your flexfield configuration
