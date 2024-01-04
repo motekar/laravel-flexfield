@@ -2,7 +2,7 @@
 
 namespace Motekar\FlexField;
 
-use Motekar\FlexField\Commands\FlexFieldCommand;
+use Motekar\FlexField\Commands\FlexFieldMigrateCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -18,8 +18,6 @@ class FlexFieldServiceProvider extends PackageServiceProvider
         $package
             ->name('laravel-flexfield')
             ->hasConfigFile()
-            ->hasViews()
-            ->hasMigration('create_laravel-flexfield_table')
-            ->hasCommand(FlexFieldCommand::class);
+            ->hasCommand(FlexFieldMigrateCommand::class);
     }
 }
