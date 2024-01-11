@@ -7,7 +7,8 @@ use Illuminate\Support\Str;
 
 trait HasFlexField
 {
-    public function flexField($name): HasOneOrMany {
+    public function flexField($name): HasOneOrMany
+    {
         if (empty($flexFieldConfig = config("flexfield.$name"))) {
             throw new \Exception("FlexField $name not available");
         }

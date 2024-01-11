@@ -24,7 +24,7 @@ class FlexFieldServiceProvider extends PackageServiceProvider
     public function packageRegistered()
     {
         $flexfield = config('flexfield');
-        foreach($flexfield as $flexName => $flexDetail) {
+        foreach ($flexfield as $flexName => $flexDetail) {
             $parentTable = (new $flexDetail['parentClass'])->getTable();
             $tableName = "{$parentTable}_{$flexName}_flex";
 

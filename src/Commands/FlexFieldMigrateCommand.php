@@ -72,6 +72,7 @@ class FlexFieldMigrateCommand extends Command
                 $column = $table->{$type}($fieldName);
             } catch (\Throwable $th) {
                 $this->error("Invalid column type specified: $type");
+
                 return;
             }
 
@@ -107,6 +108,7 @@ class FlexFieldMigrateCommand extends Command
                     $column = $table->{$type}($fieldName);
                 } catch (\Throwable $th) {
                     $this->error("Invalid column type specified: $type");
+
                     return;
                 }
 
@@ -131,13 +133,13 @@ class FlexFieldMigrateCommand extends Command
     private function buildRelationClass()
     {
         $flexfield = config('flexfield');
-        foreach($flexfield as $flexName => $flexDetail) {
+        foreach ($flexfield as $flexName => $flexDetail) {
             $parentTable = (new $flexDetail['parentClass'])->getTable();
 
             $tableName = "{$parentTable}_{$flexName}_flex";
             $fields = array_keys($flexDetail['fields']);
 
-            $fillableString = "'" . implode("', '", $fields) . "'";
+            $fillableString = "'".implode("', '", $fields)."'";
 
             $modelContent = $this->generateModelContent(
                 Str::studly($tableName),
@@ -147,7 +149,7 @@ class FlexFieldMigrateCommand extends Command
                 $flexDetail['parentClass']
             );
 
-            if (!file_exists(storage_path('flexfield'))) {
+            if (! file_exists(storage_path('flexfield'))) {
                 File::makeDirectory(storage_path('flexfield'));
             }
 
