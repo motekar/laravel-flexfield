@@ -8,12 +8,16 @@ beforeEach(function () {
     // Mock the config file with your flexfield configuration
     config()->set('flexfield', [
         'flexfield_table_1' => [
-            'field_name_1' => [
-                'type' => 'string',
-            ],
-            'field_name_2' => [
-                'type' => 'integer',
-                'default' => 42,
+            'parentClass' => 'App\Models\User',
+            'isMany' => false,
+            'fields' => [
+                'field_name_1' => [
+                    'type' => 'string',
+                ],
+                'field_name_2' => [
+                    'type' => 'integer',
+                    'default' => 42,
+                ],
             ],
         ],
     ]);

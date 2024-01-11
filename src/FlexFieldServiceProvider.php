@@ -20,4 +20,18 @@ class FlexFieldServiceProvider extends PackageServiceProvider
             ->hasConfigFile()
             ->hasCommand(FlexFieldMigrateCommand::class);
     }
+
+    public function packageRegistered()
+    {
+        $flexfield = config('flexfield');
+        foreach($flexfield as $flexName => $flexDetail) {
+            $parentTable = (new $flexDetail['parentClass'])->getTable();
+            $tableName = "{$parentTable}_{$flexName}_flex";
+
+            $classPath = storage_path('flexfield/'.$tableName.'.php');
+            if (file_exists($classPath)) {
+                require_once $classPath;
+            }
+        }
+    }
 }
