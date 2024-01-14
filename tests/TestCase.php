@@ -2,7 +2,6 @@
 
 namespace Motekar\FlexField\Tests;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Motekar\FlexField\FlexFieldServiceProvider;
