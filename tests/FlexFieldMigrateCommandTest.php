@@ -1,14 +1,15 @@
 <?php
 
+use Illuminate\Support\Facades\Schema;
+use Motekar\FlexField\Tests\TestClasses\TestModel;
+
 use function Pest\Laravel\artisan;
-use function Pest\Laravel\assertDatabaseSchemaHas;
-use function Pest\Laravel\assertDatabaseTableHas;
 
 beforeEach(function () {
     // Mock the config file with your flexfield configuration
     config()->set('flexfield', [
-        'flexfield_table_1' => [
-            'parentClass' => 'App\Models\User',
+        'flexdata' => [
+            'parentClass' => TestModel::class,
             'isMany' => false,
             'fields' => [
                 'field_name_1' => [
@@ -29,9 +30,13 @@ it('creates tables and fields based on configuration', function () {
         ->assertExitCode(0);
 
     // Assert that tables exist in the database
-    assertDatabaseSchemaHas('flexfield_table_1', 'default');
+    $exists = Schema::hasTable('test_models_flexdata_flex');
+    expect($exists)->toBeTrue();
 
     // Assert that fields exist in the tables
-    assertDatabaseTableHas('flexfield_table_1', ['field_name_1' => '']);
-    assertDatabaseTableHas('flexfield_table_1', ['field_name_2' => 42]);
+    $columnExists = Schema::hasColumns(
+        'test_models_flexdata_flex',
+        ['field_name_1', 'field_name_2']
+    );
+    expect($columnExists)->toBeTrue();
 });
